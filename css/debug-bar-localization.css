@@ -1,0 +1,110 @@
+/* CSS for plugin: Debug Bar Localization */
+#debug-menu-target-Debug_Bar_Localization h2 small {
+	display: block;
+	font-size: 60%;
+	margin-top: 10px;
+	color: #888888;
+}
+
+#debug-menu-target-Debug_Bar_Localization h3 {
+	font-family: georgia, times, serif;
+	font-size: 22px;
+	margin-top: 1.5em;
+	clear: both;
+}
+
+#debug-menu-target-Debug_Bar_Localization h4 {
+	font-size: 16px;
+	margin: 1.5em 0 0.5em;
+}
+
+#db-localization-no-load-textdomain p {
+	margin: 0.5em 0;
+}
+
+#db-localization-no-load-textdomain ul {
+	list-style: circle inside url('../images/badge-circle-cross-16.png');
+}
+
+#db-localization-unload-textdomain ul {
+	list-style: disc inside;
+}
+
+table.debug-bar-localization, th, td {
+	border: 0px none;
+}
+
+table.debug-bar-localization {
+	width: 100%;
+	border-collapse: collapse;
+	cell-padding: 1em;
+	clear: both;
+	line-height: 1.5;
+	font-size: 12px;
+	table-layout: auto;
+}
+table.debug-bar-localization thead th,
+table.debug-bar-localization tfoot th {
+	padding: 0.7em 5px;
+	width: auto;
+}
+table.debug-bar-localization thead th {
+	border-bottom: 1px solid #ccc;
+}
+table.debug-bar-localization tfoot th {
+	border-top: 1px solid #ccc;
+}
+
+table.debug-bar-localization th,
+table.debug-bar-localization td {
+	padding-left: 5px;
+	padding-right: 10px;
+}
+
+
+#db-localization-load-textdomain-calls .col-1 {
+	width: 15%;
+}
+#db-localization-load-textdomain-calls .col-2 {
+	width: 10%;
+}
+#db-localization-load-textdomain-calls .col-3 {
+	width: 20%;
+}
+#db-localization-load-textdomain-calls .col-4 {
+	width: 55%;
+}
+#db-localization-load-textdomain-calls tr td:nth-child(2) {
+	text-align: center;
+}
+
+table.debug-bar-localization th {
+	font-weight: bold;
+	padding: 2px 2em 2px 5px;
+	vertical-align: top;
+	text-align: left;
+}
+table.debug-bar-localization td {
+	padding: 2px 5px;
+	vertical-align: top;
+}
+
+table.debug-bar-localization tr:nth-child(2n+1) {
+	background-color: #E8E8E8;
+}
+
+table.debug-bar-localization .loaded {
+	color: #008000;
+}
+table.debug-bar-localization .not-loaded {
+	color: #ff0000;
+}
+
+table.debug-bar-localization ul {
+	margin: 0 0 0 15px;
+	list-style: disc outside;
+}
+
+table.debug-bar-localization ul li span {
+	color: #000000;
+}

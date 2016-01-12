@@ -1,0 +1,170 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Debug Bar Localization\n"
+"POT-Creation-Date: 2016-01-12 14:10+0100\n"
+"PO-Revision-Date: 2016-01-12 13:33+0100\n"
+"Last-Translator: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
+"Language-Team: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: debug-bar-localization.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: class-debug-bar-localization.php:76
+msgid "Localization"
+msgstr ""
+
+#: class-debug-bar-localization.php:87
+msgid "WP Core"
+msgstr ""
+
+#: class-debug-bar-localization.php:88
+msgid "Themes"
+msgstr ""
+
+#: class-debug-bar-localization.php:89
+msgid "Must-Use Plugins"
+msgstr ""
+
+#: class-debug-bar-localization.php:90
+msgid "Plugins"
+msgstr ""
+
+#: class-debug-bar-localization.php:91
+msgid "Unknown"
+msgstr ""
+
+#: class-debug-bar-localization.php:133
+msgid "Current locale:"
+msgstr ""
+
+#: class-debug-bar-localization.php:134
+msgid "Current language:"
+msgstr ""
+
+#: class-debug-bar-localization.php:135
+msgid "WPLANG:"
+msgstr ""
+
+#: class-debug-bar-localization.php:141
+msgid "(not defined)"
+msgstr ""
+
+#: class-debug-bar-localization.php:145
+msgid "Text domains<br />seen:"
+msgstr ""
+
+#: class-debug-bar-localization.php:146
+msgid "Number of attempts<br />made to load<br />a translation:"
+msgstr ""
+
+#: class-debug-bar-localization.php:166
+msgid "Installed languages"
+msgstr ""
+
+#: class-debug-bar-localization.php:171
+msgid "Locale"
+msgstr ""
+
+#: class-debug-bar-localization.php:172
+msgid "Language (native name)"
+msgstr ""
+
+#: class-debug-bar-localization.php:173
+msgid "Language (English name)"
+msgstr ""
+
+#: class-debug-bar-localization.php:174
+msgid "WP Core translation last updated:"
+msgstr ""
+
+#: class-debug-bar-localization.php:219
+msgid "Textdomains without a \"load\" call"
+msgstr ""
+
+#: class-debug-bar-localization.php:220
+msgid ""
+"To allow for text strings to be localized, the text-domain for the theme/"
+"plugin has to be loaded and all text strings used, have to be wrapped in a "
+"translation function."
+msgstr ""
+
+#. TRANSLATORS: %s is a function call code snippet.
+#: class-debug-bar-localization.php:223
+#, php-format
+msgid ""
+"The below text-domains were used in translation functions, however the text-"
+"domain was never loaded using a %s call."
+msgstr ""
+
+#: class-debug-bar-localization.php:253
+msgid "Textdomains which were unloaded during this page load"
+msgstr ""
+
+#: class-debug-bar-localization.php:272
+msgid "Load textdomain calls made"
+msgstr ""
+
+#. TRANSLATORS: %s = type of the load textdomain call, i.e. core, plugins etc.
+#: class-debug-bar-localization.php:295
+#, php-format
+msgid "For %s:"
+msgstr ""
+
+#: class-debug-bar-localization.php:351
+msgid "Text domain"
+msgstr ""
+
+#: class-debug-bar-localization.php:352
+msgid "Translated strings"
+msgstr ""
+
+#: class-debug-bar-localization.php:353
+msgid "Last updated"
+msgstr ""
+
+#: class-debug-bar-localization.php:354
+msgid "Source files tried"
+msgstr ""
+
+#: class-debug-bar-localization.php:380
+msgid "unknown"
+msgstr ""
+
+#. TRANSLATORS: %1$s = date, %2$s = translation program name.
+#: class-debug-bar-localization.php:395
+#, php-format
+msgid "%s via %s"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Debug Bar Localization"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/debug-bar-localization/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Debug Bar Localization adds a new panel to the Debug Bar which displays "
+"information on the locale for your install and the language files loaded."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Juliette Reinders Folmer"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.adviesenzo.nl/"
+msgstr ""
