@@ -68,7 +68,7 @@ There are several potential reasons for this:
 3. You might be loading your translations too early or too late. Translations are best loaded on the `(admin_)init` hook. For more information see [this article](http://geertdedeckere.be/article/loading-wordpress-language-files-the-right-way).
 
 In particular take note of the following:
-If your textdomain is loaded before this plugin is loaded, _i.e. if you load your textdomain on the PHP file load from a must-use plugin_, òr if your textdomain is loaded very late, _i.e. after the admin bar has loaded_, this plugin can not pick up on the `load_..._textdomain()` call.
+If your textdomain is loaded before this plugin is loaded, _i.e. if you load your textdomain on the PHP file load from a must-use plugin_, _or_ if your textdomain is loaded very late, _i.e. after the admin bar has loaded_, this plugin can not pick up on the `load_..._textdomain()` call.
 
 
 = Why won't the plugin activate ? =
