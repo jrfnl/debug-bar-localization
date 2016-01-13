@@ -114,11 +114,32 @@ if ( ! class_exists( 'Debug_Bar_Localization_Log_Domain_Entry' ) ) {
 
 
 		/**
+		 * Check if load_..._textdomain() calls for this domain tried to load the same file.
+		 *
+		 * This is an indication of ineffective load_..._textdomain() calls and should be fixed in
+		 * the plugin or theme.
+		 * For the core plugins page were this also occurs, I've opened ticket #....
+		 *
+		 * @return bool True if duplicate files were found. False otherwise.
+		 */
+		public function has_duplicate_files() {
+			$unique = array();
+
+			// Create an array which only consists of unique filenames.
+			foreach ( $this->mo_files as $file ) {
+				$unique[ (string) $file ] = true;
+			}
+
+			return ( count( $unique ) < $this->count_files() );
+		}
+
+
+		/**
 		 * Whether any translations where found for this text domain.
 		 *
 		 * @return bool
 		 */
-		public function translation_loaded() {
+		public function has_translation_loaded() {
 			foreach ( $this->mo_files as $file ) {
 				if ( true === $file->loaded ) {
 					return true;

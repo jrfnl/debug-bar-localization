@@ -30,7 +30,9 @@
 	list-style: disc inside;
 }
 
-table.debug-bar-localization, th, td {
+table.debug-bar-localization,
+table.debug-bar-localization th,
+table.debug-bar-localization td {
 	border: 0px none;
 }
 
@@ -98,6 +100,22 @@ table.debug-bar-localization .loaded {
 }
 table.debug-bar-localization .not-loaded {
 	color: #ff0000;
+}
+
+table.debug-bar-localization tr.has-duplicates {
+	background-color: #f8d6d6;
+}
+table.debug-bar-localization td.duplicates-warning:before {
+	content: "\26a0";
+	color: #FF0000;
+	font-size: 26px;
+    display: inline-block;
+    float: left;
+    padding: 0 15px;
+}
+table.debug-bar-localization td.duplicates-warning {
+	font-size: 90%;
+	font-weight: bold;
 }
 
 table.debug-bar-localization ul {

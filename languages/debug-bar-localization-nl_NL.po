@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Debug Bar Localization\n"
-"POT-Creation-Date: 2016-01-12 14:10+0100\n"
-"PO-Revision-Date: 2016-01-12 14:10+0100\n"
+"POT-Creation-Date: 2016-01-13 08:19+0100\n"
+"PO-Revision-Date: 2016-01-13 08:30+0100\n"
 "Last-Translator: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
 "Language-Team: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
 "Language: nl_NL\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: debug-bar-localization.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -98,6 +98,9 @@ msgid ""
 "plugin has to be loaded and all text strings used, have to be wrapped in a "
 "translation function."
 msgstr ""
+"Om het mogelijk te maken dat teksten vertaald worden, moet het tekstdomein "
+"van een thema of plugin geladen worden. Tevens moet een vertaalfunctie "
+"aangeroepen worden voor alle teksten die gebruikt worden."
 
 #. TRANSLATORS: %s is a function call code snippet.
 #: class-debug-bar-localization.php:223
@@ -106,14 +109,16 @@ msgid ""
 "The below text-domains were used in translation functions, however the text-"
 "domain was never loaded using a %s call."
 msgstr ""
+"De onderstaande tekstdomeinen zijn gebruikt in lokalisatie functies, maar "
+"het tekstdomein is niet geladen met een %s aanroep."
 
 #: class-debug-bar-localization.php:253
 msgid "Textdomains which were unloaded during this page load"
-msgstr ""
+msgstr "Tekstdomeinen welke tijdens het laden van deze pagina verwijderd zijn"
 
 #: class-debug-bar-localization.php:272
 msgid "Load textdomain calls made"
-msgstr ""
+msgstr "Gemaakt aanroepen voor tekstdomeinen"
 
 #. TRANSLATORS: %s = type of the load textdomain call, i.e. core, plugins etc.
 #: class-debug-bar-localization.php:295
@@ -121,35 +126,48 @@ msgstr ""
 msgid "For %s:"
 msgstr "Voor %s:"
 
-#: class-debug-bar-localization.php:351
+#: class-debug-bar-localization.php:337
+#, php-format
+msgid ""
+"WordPress tried to load the same .mo file more than once. This can happen if "
+"the requested translation is not found and the %s call for this domain was "
+"made several times. Please contact the theme or plugin developer to get this "
+"fixed."
+msgstr ""
+"WordPress heeft meerdere malen geprobeerd hetzelfde .mo bestand te laden. "
+"Dit kan gebeuren als de gewenste vertaling niet beschikbaar is en de %s "
+"functie voor dit domein meerdere malen aangeroepen wordt. Neem contact op "
+"met de thema of plugin ontwikkelaar om dit op te lossen."
+
+#: class-debug-bar-localization.php:366
 msgid "Text domain"
 msgstr "Tekstdomein"
 
-#: class-debug-bar-localization.php:352
+#: class-debug-bar-localization.php:367
 msgid "Translated strings"
 msgstr "Vertaalde zinsnedes"
 
-#: class-debug-bar-localization.php:353
+#: class-debug-bar-localization.php:368
 msgid "Last updated"
 msgstr "Voor het laatst bijgewerkt"
 
-#: class-debug-bar-localization.php:354
+#: class-debug-bar-localization.php:369
 msgid "Source files tried"
 msgstr "Bron bestanden geprobeerd"
 
-#: class-debug-bar-localization.php:380
+#: class-debug-bar-localization.php:395
 msgid "unknown"
 msgstr "onbekend"
 
 #. TRANSLATORS: %1$s = date, %2$s = translation program name.
-#: class-debug-bar-localization.php:395
+#: class-debug-bar-localization.php:410
 #, php-format
 msgid "%s via %s"
 msgstr "%s met %s"
 
 #. Plugin Name of the plugin/theme
 msgid "Debug Bar Localization"
-msgstr "Debug Bar Localization"
+msgstr "Debug Bar Localizatie"
 
 #. Plugin URI of the plugin/theme
 msgid "https://wordpress.org/plugins/debug-bar-localization/"
@@ -160,6 +178,9 @@ msgid ""
 "Debug Bar Localization adds a new panel to the Debug Bar which displays "
 "information on the locale for your install and the language files loaded."
 msgstr ""
+"Devug Bar Lokalizatie voegt een nieuw paneel toe aan de Debug Bar welke "
+"information weergeeft over de locale van je installatie en de geladen "
+"vertalingsbestanden."
 
 #. Author of the plugin/theme
 msgid "Juliette Reinders Folmer"
