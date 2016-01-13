@@ -286,7 +286,8 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 		 * @param string $type The add-on type to create the table for.
 		 */
 		protected function render_load_textdomain_table( $type ) {
-			$logs = $this->logger->filter_logs_on_type( $type );
+			$logs            = $this->logger->filter_logs_on_type( $type );
+			$is_plugins_page = ( is_admin() && 'plugins' === get_current_screen()->base );
 
 			if ( ! empty( $logs ) && is_array( $logs ) ) {
 				echo '
@@ -309,7 +310,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 					echo '
 				<tr';
 
-					if ( true === $has_duplicates ) {
+					if ( true === $has_duplicates && ! $is_plugins_page ) {
 						echo ' class="has-duplicates"';
 					}
 
@@ -330,7 +331,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 
 					$this->render_file_list( $domain_object );
 
-					if ( true === $has_duplicates ) {
+					if ( true === $has_duplicates && ! $is_plugins_page ) {
 						echo '
 				</tr>
 				<tr class="has-duplicates">
