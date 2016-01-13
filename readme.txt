@@ -77,6 +77,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
+= 1.0.1 (2016-xx-xx ) =
+* Don't show warning about duplicate load calls on plugins page as that's caused by core, not by a plugin and the warning could be misleading.
+
 = 1.0 (2016-01-13) =
 * Initial release.
 
