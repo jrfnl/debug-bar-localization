@@ -30,7 +30,7 @@ Also note that this plugin should be used solely for debugging and/or in a devel
 
 ***********************************
 
-If you like this plugin, please [rate and/or review](http://wordpress.org/support/view/plugin-reviews/debug-bar-localization) it. If you have ideas on how to make the plugin even better or if you have found any bugs, please report these in the [Support Forum](http://wordpress.org/support/plugin/debug-bar-localization) or in the [GitHub repository](https://github.com/jrfnl/Debug-Bar-Localization/issues).
+If you like this plugin, please [rate and/or review](http://wordpress.org/support/view/plugin-reviews/debug-bar-localization) it. If you have ideas on how to make the plugin even better or if you have found any bugs, please report these in the [Support Forum](http://wordpress.org/support/plugin/debug-bar-localization) or in the [GitHub repository](https://github.com/jrfnl/debug-bar-localization/issues).
 
 
 

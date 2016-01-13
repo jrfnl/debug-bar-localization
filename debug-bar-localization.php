@@ -4,7 +4,7 @@
  *
  * @package     WordPress\Plugins\Debug Bar Localization
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
- * @link        https://github.com/jrfnl/Debug-Bar-Localization
+ * @link        https://github.com/jrfnl/debug-bar-localization
  * @version     1.0
  *
  * @copyright   2016 Juliette Reinders Folmer
