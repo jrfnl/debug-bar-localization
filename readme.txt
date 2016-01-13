@@ -18,6 +18,7 @@ Additionally it will show you:
 
 * The installed languages.
 * Which text-domains were called from translation functions while no `load_..._textdomain()` call was found for that text-domain.
+* For which text-domains `load_..._textdomain()` was called more than once.
 * Which files WP tried to load to obtain a translation and whether this was successful.
 * If successful: how many translated strings were found and when the translation was last updated.
 
@@ -76,7 +77,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
-= 1.0 (2016-01-12) =
+= 1.0 (2016-01-13) =
 * Initial release.
 
 
