@@ -80,6 +80,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 = 1.0.1 (2016-xx-xx ) =
 * Don't show warning about duplicate load calls on plugins page as that's caused by core, not by a plugin and the warning could be misleading.
 * Prevent error notices in WP < 4.0.
+* Make loading of text-domain compatible with use of the plugin in the `must-use` plugins directory.
 
 = 1.0 (2016-01-13) =
 * Initial release.
