@@ -34,8 +34,8 @@ if ( ! function_exists( 'add_action' ) ) {
 /**
  * Make sure the plugin slug for this plugin is always available.
  */
-if ( ! defined( 'DB_LOCALIZATION_SLUG' ) ) {
-	define( 'DB_LOCALIZATION_SLUG', 'debug-bar-localization' );
+if ( ! defined( 'DB_LOCALIZATION_BASENAME' ) ) {
+	define( 'DB_LOCALIZATION_BASENAME', plugin_basename( __FILE__ ) );
 }
 
 
@@ -93,13 +93,13 @@ if ( version_compare( $wp_version, '4.0', '>' ) ) {
 		 * @return array
 		 */
 		function db_localization_network_load_first( $value ) {
-			if ( ! is_array( $value ) || ! isset( $value[ DB_LOCALIZATION_SLUG ] ) ) {
+			if ( ! is_array( $value ) || ! isset( $value[ DB_LOCALIZATION_BASENAME ] ) ) {
 				return $value;
 			}
 
-			$this_plugin = $value[ DB_LOCALIZATION_SLUG ];
-			unset( $value[ DB_LOCALIZATION_SLUG ] );
-			return array_merge( array( DB_LOCALIZATION_SLUG => $this_plugin ), $value );
+			$this_plugin = $value[ DB_LOCALIZATION_BASENAME ];
+			unset( $value[ DB_LOCALIZATION_BASENAME ] );
+			return array_merge( array( DB_LOCALIZATION_BASENAME => $this_plugin ), $value );
 		}
 	}
 
@@ -121,11 +121,12 @@ if ( version_compare( $wp_version, '4.0', '>' ) ) {
 				return $value;
 			}
 
-			$key = array_search( DB_LOCALIZATION_SLUG, $value, true );
+			$key = array_search( DB_LOCALIZATION_BASENAME, $value, true );
 			if ( false !== $key ) {
 				unset( $value[ $key ] );
+				array_unshift( $value, DB_LOCALIZATION_BASENAME );
 			}
-			array_unshift( $value, DB_LOCALIZATION_SLUG );
+
 			return $value;
 		}
 	}
