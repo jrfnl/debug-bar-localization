@@ -78,7 +78,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 			if ( ! function_exists( 'wp_get_available_translations' ) ) {
-				require_once( ABSPATH . 'wp-admin/includes/translation-install.php' );
+				require_once ABSPATH . 'wp-admin/includes/translation-install.php';
 			}
 			$this->wp_translations = wp_get_available_translations();
 
@@ -107,7 +107,8 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 			$lang_path = dirname( plugin_basename( __FILE__ ) ) . '/languages';
 			if ( false === strpos( __FILE__, basename( WPMU_PLUGIN_DIR ) ) ) {
 				load_plugin_textdomain( $domain, false, $lang_path );
-			} else {
+			}
+			else {
 				load_muplugin_textdomain( $domain, $lang_path );
 			}
 		}
@@ -164,7 +165,6 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 			echo '</h2>
 		<h2><span>', wp_kses_post( __( 'Text domains<br />seen:', 'debug-bar-localization' ) ), '</span>', absint( count( $unique_text_domains ) ), '</h2>
 		<h2><span>', wp_kses_post( __( 'Number of attempts<br />made to load<br />a translation:', 'debug-bar-localization' ) ), '</span>', absint( $this->logger->counter ), '</h2>';
-
 
 			$this->render_installed_lang_section();
 			$this->render_no_load_textdomain_section();
@@ -418,7 +418,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 				if ( false !== strpos( $GLOBALS['l10n'][ $domain ]->headers['X-Generator'], 'GlotPress' ) ) {
 					$generator = 'GlotPress';
 				}
-				else if ( false !== strpos( $GLOBALS['l10n'][ $domain ]->headers['X-Generator'], 'Poedit' ) ) {
+				elseif ( false !== strpos( $GLOBALS['l10n'][ $domain ]->headers['X-Generator'], 'Poedit' ) ) {
 					$generator = 'Poedit';
 				}
 				else {

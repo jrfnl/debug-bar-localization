@@ -95,7 +95,7 @@ if ( ! class_exists( 'Debug_Bar_Localization_Log_Domain_Entry' ) ) {
 		 */
 		public function get_type() {
 			foreach ( $this->mo_files as $file ) {
-				if ( $file->type !== Debug_Bar_Localization_Log_MO_file_Entry::UNKNOWN_TYPE ) {
+				if ( Debug_Bar_Localization_Log_MO_file_Entry::UNKNOWN_TYPE !== $file->type ) {
 					return $file->type;
 				}
 			}

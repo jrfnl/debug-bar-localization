@@ -3,15 +3,10 @@
 	<description>The code standard for Debug Bar Localization is WordPress.</description>
 
 	<rule ref="WordPress">
-		<exclude name="WordPress.VIP" />
 		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines" />
 
 		<!-- else on new line is perfectly fine -->
 		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace" />
-
-		<!-- Demanding Yoda conditions is stupid. -->
-		<exclude name="WordPress.PHP.YodaConditions"/>
-
 	</rule>
 
 
