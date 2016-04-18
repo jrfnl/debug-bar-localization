@@ -83,6 +83,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 * Make loading of text-domain compatible with use of the plugin in the `must-use` plugins directory.
 * [Enhancement] Improve categorization of the loaded text-domains. This mainly applies to text-domains for which the mo_file paths are being filtered.
 * [Bugfix] The plugin loading order functions were inadvertently checking the wrong value and - in single site - install, adding an invalid value to the active plugins list causing incorrect 'plugin deactivated as file not found' notices.
+* [Compatibility] Fix WP 4.5 compatibility - the check whether a text-domain `load` call was made (ab)used a bug in the `is_textdomain_loaded()` function. [This bug](https://core.trac.wordpress.org/ticket/21319) was fixed in WP 4.5. Fixed by creating a work-around to still be able to provide this information.
 * General housekeeping
 
 = 1.0 (2016-01-13) =
