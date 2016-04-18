@@ -81,6 +81,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 * Don't show warning about duplicate load calls on plugins page as that's caused by core, not by a plugin and the warning could be misleading.
 * Prevent error notices in WP < 4.0.
 * Make loading of text-domain compatible with use of the plugin in the `must-use` plugins directory.
+* [Enhancement] Improve categorization of the loaded text-domains. This mainly applies to text-domains for which the mo_file paths are being filtered.
 * [Bugfix] The plugin loading order functions were inadvertently checking the wrong value and - in single site - install, adding an invalid value to the active plugins list causing incorrect 'plugin deactivated as file not found' notices.
 * General housekeeping
 

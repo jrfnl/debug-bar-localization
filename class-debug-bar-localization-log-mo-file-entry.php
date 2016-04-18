@@ -41,6 +41,13 @@ if ( ! class_exists( 'Debug_Bar_Localization_Log_MO_file_Entry' ) ) {
 		private $mo_file;
 
 		/**
+		 * The full path to the MO file (before filtering).
+		 *
+		 * @var string
+		 */
+		private $requested_file;
+
+		/**
 		 * The type of add-on this MO file applies to.
 		 * Possible values: 'core', 'theme', 'muplugin', 'plugin' or 'unknown'.
 		 *
@@ -66,10 +73,13 @@ if ( ! class_exists( 'Debug_Bar_Localization_Log_MO_file_Entry' ) ) {
 		/**
 		 * Constructor, set all properties.
 		 *
-		 * @param string $mo_file The full path to the file WP will try to load.
+		 * @param string $actual_mo_file    The full path to the file WP will try to load (after filtering).
+		 * @param string $requested_mo_file The full path to the file WP which was requested (before filtering).
 		 */
-		public function __construct( $mo_file ) {
-			$this->mo_file = $mo_file;
+		public function __construct( $actual_mo_file, $requested_mo_file ) {
+			$this->mo_file        = $actual_mo_file;
+			$this->requested_file = $requested_mo_file;
+
 			$this->set_type();
 			$this->set_loaded();
 			$this->set_file_permissions();
@@ -101,23 +111,44 @@ if ( ! class_exists( 'Debug_Bar_Localization_Log_MO_file_Entry' ) ) {
 
 
 		/**
-		 * Set the $type property based on a best guess the type of WP add-on this text-domain file is used for.
+		 * Set the $type property of this text-domain.
+		 *
+		 * Will first try to determine the type based on the actual $mo_file requested.
+		 * If that fails, will try the same for the unfiltered $mo_file path.
 		 */
 		private function set_type() {
-			if ( false !== strpos( $this->mo_file, WPMU_PLUGIN_DIR ) ) {
-				$this->type = 'muplugin';
+			$type = $this->get_type( $this->mo_file );
+
+			if ( self::UNKNOWN_TYPE === $type && $this->mo_file !== $this->requested_file ) {
+				$type = $this->get_type( $this->requested_file );
 			}
-			elseif ( false !== strpos( $this->mo_file, WP_PLUGIN_DIR ) || false !== strpos( $this->mo_file, WP_LANG_DIR . '/plugins/' ) ) {
-				$this->type = 'plugin';
+
+			$this->type = $type;
+		}
+
+
+		/**
+		 * Get the $type property based on a best guess of the type of WP add-on this text-domain file is used for.
+		 *
+		 * @param string $file Path to an mo-file.
+		 *
+		 * @return string Add-on type.
+		 */
+		private function get_type( $file ) {
+			if ( false !== strpos( $file, WPMU_PLUGIN_DIR ) ) {
+				return 'muplugin';
 			}
-			elseif ( ( false !== strpos( $this->mo_file, get_stylesheet_directory() ) || false !== strpos( $this->mo_file, get_template_directory() ) ) || false !== strpos( $this->mo_file, WP_LANG_DIR . '/themes/' ) ) {
-				$this->type = 'theme';
+			elseif ( false !== strpos( $file, WP_PLUGIN_DIR ) || false !== strpos( $file, WP_LANG_DIR . '/plugins/' ) ) {
+				return 'plugin';
 			}
-			elseif ( false !== strpos( $this->mo_file, WP_LANG_DIR ) ) {
-				$this->type = 'core';
+			elseif ( ( false !== strpos( $file, get_stylesheet_directory() ) || false !== strpos( $file, get_template_directory() ) ) || false !== strpos( $file, WP_LANG_DIR . '/themes/' ) ) {
+				return 'theme';
+			}
+			elseif ( false !== strpos( $file, WP_LANG_DIR ) ) {
+				return 'core';
 			}
 			else {
-				$this->type = self::UNKNOWN_TYPE;
+				return self::UNKNOWN_TYPE;
 			}
 		}
 

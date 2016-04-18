@@ -61,8 +61,8 @@ if ( ! class_exists( 'Debug_Bar_Localization_Log_Domain_Entry' ) ) {
 		 */
 		public function add_file( $mo_file ) {
 			// Make sure we have the name of the actual file as used after filtering.
-			$mo_file          = apply_filters( 'load_textdomain_mofile', $mo_file, $this->domain );
-			$this->mo_files[] = new Debug_Bar_Localization_Log_MO_file_Entry( $mo_file );
+			$actual_mo_file   = apply_filters( 'load_textdomain_mofile', $mo_file, $this->domain );
+			$this->mo_files[] = new Debug_Bar_Localization_Log_MO_file_Entry( $actual_mo_file, $mo_file );
 		}
 
 
