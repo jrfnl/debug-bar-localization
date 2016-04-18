@@ -287,16 +287,23 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 		 * Render the 'Loaded text-domains' section.
 		 */
 		protected function render_load_textdomain_section() {
-			echo '
+			if ( $this->logger->counter > 0 ) {
+				echo '
 			<div id="db-localization-load-textdomain-calls">
 				<h3>', esc_html__( 'Load textdomain calls made', 'debug-bar-localization' ), '</h3>';
 
-			foreach ( $this->load_call_types as $type => $unused ) {
-				$this->render_load_textdomain_table( $type );
-			}
+				foreach ( $this->load_call_types as $type => $unused ) {
+					$this->render_load_textdomain_table( $type );
+				}
 
-			echo '
+				echo '
 			</div>';
+			}
+			else {
+				echo '
+				<hr />
+				<p>', wp_kses( __( 'No text domain load calls made. This should never happen...', 'debug-bar-localization' ), array( 'code' => array() ) ), '</p>';
+			}
 		}
 
 
