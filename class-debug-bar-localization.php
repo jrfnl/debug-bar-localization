@@ -6,7 +6,7 @@
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
  * @link        https://github.com/jrfnl/debug-bar-localization
  * @since       1.0
- * @version     1.0
+ * @version     1.1
  *
  * @copyright   2016 Juliette Reinders Folmer
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
@@ -206,7 +206,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 					</thead>
 					<tbody>
 						<tr>
-							<th>en_US :</th>
+							<th>en_US:</th>
 							<td>English (United States)</td>
 							<td>-</td>
 							<td>-</td>
@@ -247,7 +247,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 				<h3>', esc_html__( 'Textdomains without a "load" call', 'debug-bar-localization' ), '</h3>
 				<p>', esc_html__( 'To allow for text strings to be localized, the text-domain for the theme/plugin has to be loaded and all text strings used, have to be wrapped in a translation function.', 'debug-bar-localization' ), '</p>
 				<p>',
-				/* TRANSLATORS: %s is a function call code snippet. */
+				/* translators: %s is a function call code snippet. */
 				sprintf( esc_html__( 'The below text-domains were used in translation functions, however the text-domain was never loaded using a %s call.', 'debug-bar-localization' ), '<code>load_{default|muplugin|plugin|theme|child_theme}_textdomain()</code>' ), '</p>
 				<ul>';
 				foreach ( $diff as $missing ) {
@@ -354,7 +354,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 			if ( ! empty( $logs ) && is_array( $logs ) ) {
 				echo '
 				<h4>',
-				/* TRANSLATORS: %s = type of the load textdomain call, i.e. core, plugins etc. */
+				/* translators: %s = type of the load textdomain call, i.e. core, plugins etc. */
 				sprintf( esc_html__( 'For %s:', 'debug-bar-localization' ), esc_html( $this->load_call_types[ $type ] ) ), '</h4>';
 
 				echo // WPCS: xss ok.
@@ -482,7 +482,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 			}
 
 			echo wp_kses_post( sprintf(
-				/* TRANSLATORS: %1$s = date, %2$s = translation program name. */
+				/* translators: 1: date, 2: translation program name. */
 				__( '%s via %s', 'debug-bar-localization' ),
 				substr( $revision_date, 0, 10 ),
 				'<em>' . $generator . '</em>'

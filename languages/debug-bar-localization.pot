@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Debug Bar Localization\n"
-"POT-Creation-Date: 2016-01-13 08:18+0100\n"
+"POT-Creation-Date: 2016-04-28 13:51+0200\n"
 "PO-Revision-Date: 2016-01-12 13:33+0100\n"
 "Last-Translator: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
 "Language-Team: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: debug-bar-localization.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -20,108 +20,135 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: class-debug-bar-localization.php:76
+#: class-debug-bar-localization.php:83
 msgid "Localization"
 msgstr ""
 
-#: class-debug-bar-localization.php:87
+#: class-debug-bar-localization.php:94
 msgid "WP Core"
 msgstr ""
 
-#: class-debug-bar-localization.php:88
+#: class-debug-bar-localization.php:95
 msgid "Themes"
 msgstr ""
 
-#: class-debug-bar-localization.php:89
+#: class-debug-bar-localization.php:96
 msgid "Must-Use Plugins"
 msgstr ""
 
-#: class-debug-bar-localization.php:90
+#: class-debug-bar-localization.php:97
 msgid "Plugins"
 msgstr ""
 
-#: class-debug-bar-localization.php:91
+#: class-debug-bar-localization.php:98
 msgid "Unknown"
 msgstr ""
 
-#: class-debug-bar-localization.php:133
+#: class-debug-bar-localization.php:163
 msgid "Current locale:"
 msgstr ""
 
-#: class-debug-bar-localization.php:134
+#: class-debug-bar-localization.php:164
 msgid "Current language:"
 msgstr ""
 
-#: class-debug-bar-localization.php:135
+#: class-debug-bar-localization.php:165
 msgid "WPLANG:"
 msgstr ""
 
-#: class-debug-bar-localization.php:141
+#: class-debug-bar-localization.php:171
 msgid "(not defined)"
 msgstr ""
 
-#: class-debug-bar-localization.php:145
+#: class-debug-bar-localization.php:175
 msgid "Text domains<br />seen:"
 msgstr ""
 
-#: class-debug-bar-localization.php:146
+#: class-debug-bar-localization.php:176
 msgid "Number of attempts<br />made to load<br />a translation:"
 msgstr ""
 
-#: class-debug-bar-localization.php:166
+#: class-debug-bar-localization.php:196
 msgid "Installed languages"
 msgstr ""
 
-#: class-debug-bar-localization.php:171
+#: class-debug-bar-localization.php:201
 msgid "Locale"
 msgstr ""
 
-#: class-debug-bar-localization.php:172
+#: class-debug-bar-localization.php:202
 msgid "Language (native name)"
 msgstr ""
 
-#: class-debug-bar-localization.php:173
+#: class-debug-bar-localization.php:203
 msgid "Language (English name)"
 msgstr ""
 
-#: class-debug-bar-localization.php:174
+#: class-debug-bar-localization.php:204
 msgid "WP Core translation last updated:"
 msgstr ""
 
-#: class-debug-bar-localization.php:219
+#: class-debug-bar-localization.php:247
 msgid "Textdomains without a \"load\" call"
 msgstr ""
 
-#: class-debug-bar-localization.php:220
+#: class-debug-bar-localization.php:248
 msgid ""
 "To allow for text strings to be localized, the text-domain for the theme/"
 "plugin has to be loaded and all text strings used, have to be wrapped in a "
 "translation function."
 msgstr ""
 
-#. TRANSLATORS: %s is a function call code snippet.
-#: class-debug-bar-localization.php:223
+#. translators: %s is a function call code snippet.
+#: class-debug-bar-localization.php:251
 #, php-format
 msgid ""
 "The below text-domains were used in translation functions, however the text-"
 "domain was never loaded using a %s call."
 msgstr ""
 
-#: class-debug-bar-localization.php:253
+#: class-debug-bar-localization.php:276
+msgid "Potentially inefficient calls"
+msgstr ""
+
+#: class-debug-bar-localization.php:277
+msgid ""
+"Loading a text domain when it will not be used is inefficient. Lean, or lazy "
+"loading is a programming best practice which comes down to only loading "
+"files if and when needed."
+msgstr ""
+
+#: class-debug-bar-localization.php:278
+msgid ""
+"The below textdomains <em>were</em> loaded, but were <em>not used</em> in a "
+"localization call during this page load."
+msgstr ""
+
+#: class-debug-bar-localization.php:278
+msgid ""
+"This is not always \"wrong\", but these calls could benefit from a visual "
+"code inspection."
+msgstr ""
+
+#: class-debug-bar-localization.php:308
 msgid "Textdomains which were unloaded during this page load"
 msgstr ""
 
-#: class-debug-bar-localization.php:272
+#: class-debug-bar-localization.php:328
 msgid "Load textdomain calls made"
 msgstr ""
 
-#. TRANSLATORS: %s = type of the load textdomain call, i.e. core, plugins etc.
-#: class-debug-bar-localization.php:295
+#: class-debug-bar-localization.php:340
+msgid "No text domain load calls made. This should never happen..."
+msgstr ""
+
+#. translators: %s = type of the load textdomain call, i.e. core, plugins etc.
+#: class-debug-bar-localization.php:358
 #, php-format
 msgid "For %s:"
 msgstr ""
 
-#: class-debug-bar-localization.php:337
+#: class-debug-bar-localization.php:400
 #, php-format
 msgid ""
 "WordPress tried to load the same .mo file more than once. This can happen if "
@@ -130,28 +157,28 @@ msgid ""
 "fixed."
 msgstr ""
 
-#: class-debug-bar-localization.php:366
+#: class-debug-bar-localization.php:429
 msgid "Text domain"
 msgstr ""
 
-#: class-debug-bar-localization.php:367
+#: class-debug-bar-localization.php:430
 msgid "Translated strings"
 msgstr ""
 
-#: class-debug-bar-localization.php:368
+#: class-debug-bar-localization.php:431
 msgid "Last updated"
 msgstr ""
 
-#: class-debug-bar-localization.php:369
+#: class-debug-bar-localization.php:432
 msgid "Source files tried"
 msgstr ""
 
-#: class-debug-bar-localization.php:395
+#: class-debug-bar-localization.php:471
 msgid "unknown"
 msgstr ""
 
-#. TRANSLATORS: %1$s = date, %2$s = translation program name.
-#: class-debug-bar-localization.php:410
+#. translators: 1: date, 2: translation program name.
+#: class-debug-bar-localization.php:486
 #, php-format
 msgid "%s via %s"
 msgstr ""
