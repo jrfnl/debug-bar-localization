@@ -27,13 +27,13 @@ if ( ! class_exists( 'Debug_Bar_Localization_logger' ) ) {
 	class Debug_Bar_Localization_Logger {
 
 		/**
-		 * Log of a text domain load calls.
+		 * Log of all text domain load calls.
 		 *
 		 * Contains \Debug_Bar_Localization_Log_Domain_Entry objects.
 		 *
 		 * @var array
 		 */
-		private $log = array();
+		private $load_log = array();
 
 		/**
 		 * Array of all text domains which were unloaded during this page load.
@@ -49,6 +49,13 @@ if ( ! class_exists( 'Debug_Bar_Localization_logger' ) ) {
 		 */
 		private $counter = 0;
 
+		/**
+		 * Array of all text domains for which translation were requested.
+		 *
+		 * @var array
+		 */
+		private $domain_log = array();
+
 
 		/**
 		 * Constructor.
@@ -58,6 +65,17 @@ if ( ! class_exists( 'Debug_Bar_Localization_logger' ) ) {
 			add_action( 'unload_textdomain', array( $this, 'log_unload_calls' ), 10 );
 
 			require_once dirname( __FILE__ ) . '/class-debug-bar-localization-log-domain-entry.php';
+
+			/*
+			 * Deal with the fall-out of Trac ticket 21319 which was merged in WP 4.5.
+			 * @see https://core.trac.wordpress.org/ticket/21319
+			 */
+			if ( version_compare( $GLOBALS['wp_version'], '4.4.99', '>=' ) ) {
+				add_filter( 'gettext', array( $this, 'log_requested_domains' ), 10, 3 );
+				add_filter( 'gettext_with_context', array( $this, 'log_requested_domains' ), 10, 4 );
+				add_filter( 'ngettext', array( $this, 'log_requested_domains' ), 10, 5 );
+				add_filter( 'ngettext_with_context', array( $this, 'log_requested_domains' ), 10, 6 );
+			}
 		}
 
 
@@ -68,10 +86,10 @@ if ( ! class_exists( 'Debug_Bar_Localization_logger' ) ) {
 		 * @param string $mo_file The full path to the MO file WP will try to load.
 		 */
 		public function log_textdomain_calls( $domain, $mo_file ) {
-			if ( ! isset( $this->log[ $domain ] ) ) {
-				$this->log[ $domain ] = new Debug_Bar_Localization_Log_Domain_Entry( $domain );
+			if ( ! isset( $this->load_log[ $domain ] ) ) {
+				$this->load_log[ $domain ] = new Debug_Bar_Localization_Log_Domain_Entry( $domain );
 			}
-			$this->log[ $domain ]->add_file( $mo_file );
+			$this->load_log[ $domain ]->add_file( $mo_file );
 			$this->counter++;
 		}
 
@@ -83,6 +101,21 @@ if ( ! class_exists( 'Debug_Bar_Localization_logger' ) ) {
 		 */
 		public function log_unload_calls( $domain ) {
 			$this->unload_log[ $domain ] = $domain;
+		}
+
+
+		/**
+		 * Log the domain when a get_text translation request is made.
+		 *
+		 * @params mixed The first param will hold the translation(s) and is expected to be returned.
+		 *               The last param always holds the $domain.
+		 *
+		 * @return string Unchanged translation.
+		 */
+		public function log_requested_domains() {
+			$args               = func_get_args();
+			$this->domain_log[] = array_pop( $args );
+			return $args[0];
 		}
 
 
@@ -101,6 +134,21 @@ if ( ! class_exists( 'Debug_Bar_Localization_logger' ) ) {
 
 
 		/**
+		 * Get a list of all domains for which translations have been requested.
+		 *
+		 * @return array
+		 */
+		public function get_requested_domains() {
+			if ( version_compare( $GLOBALS['wp_version'], '4.4.99', '<' ) ) {
+				return array_keys( $GLOBALS['l10n'] );
+			}
+			else {
+				return array_unique( $this->domain_log );
+			}
+		}
+
+
+		/**
 		 * Filter the logs based on add-on type.
 		 *
 		 * @param string $type Add-on type. Valid values: 'core', 'theme', 'muplugin', 'plugin' or 'unknown'.
@@ -110,8 +158,8 @@ if ( ! class_exists( 'Debug_Bar_Localization_logger' ) ) {
 		public function filter_logs_on_type( $type ) {
 			$filtered = array();
 
-			if ( ! empty( $this->log ) ) {
-				foreach ( $this->log as $domain => $logs ) {
+			if ( ! empty( $this->load_log ) ) {
+				foreach ( $this->load_log as $domain => $logs ) {
 					if ( $logs->get_type() === $type ) {
 						$filtered[ $domain ] = $logs;
 					}

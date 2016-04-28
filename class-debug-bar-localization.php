@@ -68,6 +68,14 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 
 
 		/**
+		 * The domains which have been requested in translation calls.
+		 *
+		 * @var array
+		 */
+		private $domains = array();
+
+
+		/**
 		 * Constructor.
 		 */
 		public function init() {
@@ -137,7 +145,8 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 		 * Render the tab content.
 		 */
 		public function render() {
-			$this->logger = $GLOBALS['db_localization_logger'];
+			$this->logger  = $GLOBALS['db_localization_logger'];
+			$this->domains = $this->logger->get_requested_domains();
 
 			// Prep data for the headers.
 			$current_locale           = get_locale();
@@ -148,7 +157,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 				$current_language_english = $this->wp_translations[ $current_locale ]['english_name'];
 			}
 
-			$unique_text_domains = array_unique( array_merge( array_keys( $GLOBALS['l10n'] ), array_keys( $this->logger->log ) ) );
+			$unique_text_domains = array_unique( array_merge( $this->domains, array_keys( $this->logger->load_log ) ) );
 
 			echo '
 		<h2><span>', esc_html__( 'Current locale:', 'debug-bar-localization' ), '</span>', esc_html( $current_locale ), '</h2>
@@ -229,9 +238,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 		 * Render the 'Text-domain without a load call' section.
 		 */
 		protected function render_no_load_textdomain_section() {
-			$l10n_domains   = array_keys( $GLOBALS['l10n'] );
-			$logged_domains = array_keys( $this->logger->log );
-			$diff           = array_diff( $l10n_domains, $logged_domains );
+			$diff = array_diff( $this->domains, array_keys( $this->logger->load_log ) );
 
 			if ( ! empty( $diff ) && is_array( $diff ) ) {
 				echo '
@@ -420,23 +427,36 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 		 * @param string $domain The current text domain.
 		 */
 		protected function render_last_updated( $domain ) {
+			if ( ! isset( $GLOBALS['l10n'][ $domain ] ) ) {
+				echo '-';
+				return;
+			}
+
+			$x_generator   = $GLOBALS['l10n'][ $domain ]->get_header( 'X-Generator' );
+			$revision_date = $GLOBALS['l10n'][ $domain ]->get_header( 'PO-Revision-Date' );
+
+			if ( false === $revision_date ) {
+				echo '-';
+				return;
+			}
+
 			$generator = __( 'unknown', 'debug-bar-localization' );
-			if ( ! empty( $GLOBALS['l10n'][ $domain ]->headers ) && is_array( $GLOBALS['l10n'][ $domain ]->headers ) && isset( $GLOBALS['l10n'][ $domain ]->headers['X-Generator'] ) ) {
-				if ( false !== strpos( $GLOBALS['l10n'][ $domain ]->headers['X-Generator'], 'GlotPress' ) ) {
+			if ( ! empty( $x_generator ) && is_string( $x_generator ) ) {
+				if ( false !== strpos( $x_generator, 'GlotPress' ) ) {
 					$generator = 'GlotPress';
 				}
-				elseif ( false !== strpos( $GLOBALS['l10n'][ $domain ]->headers['X-Generator'], 'Poedit' ) ) {
+				elseif ( false !== strpos( $x_generator, 'Poedit' ) ) {
 					$generator = 'Poedit';
 				}
 				else {
-					$generator = $GLOBALS['l10n'][ $domain ]->headers['X-Generator'];
+					$generator = $x_generator;
 				}
 			}
 
 			echo wp_kses_post( sprintf(
 				/* TRANSLATORS: %1$s = date, %2$s = translation program name. */
 				__( '%s via %s', 'debug-bar-localization' ),
-				substr( $GLOBALS['l10n'][ $domain ]->headers['PO-Revision-Date'], 0, 10 ),
+				substr( $revision_date, 0, 10 ),
 				'<em>' . $generator . '</em>'
 			) );
 		}
