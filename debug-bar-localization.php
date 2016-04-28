@@ -5,7 +5,7 @@
  * @package     WordPress\Plugins\Debug Bar Localization
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
  * @link        https://github.com/jrfnl/debug-bar-localization
- * @version     1.0
+ * @version     1.1
  *
  * @copyright   2016 Juliette Reinders Folmer
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
@@ -14,7 +14,7 @@
  * Plugin Name: Debug Bar Localization
  * Plugin URI:  https://wordpress.org/plugins/debug-bar-localization/
  * Description: Debug Bar Localization adds a new panel to the Debug Bar which displays information on the locale for your install and the language files loaded.
- * Version:     1.0
+ * Version:     1.1
  * Author:      Juliette Reinders Folmer
  * Author URI:  http://www.adviesenzo.nl/
  * Depends:     Debug Bar

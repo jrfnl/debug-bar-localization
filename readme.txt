@@ -3,9 +3,8 @@ Contributors: jrf
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=995SSNDTCVBJG
 Tags: debugbar, debug-bar, Debug Bar, Localization, Language, Translation, text domain, textdomain
 Requires at least: 4.0
-Tested up to: 4.4
-Stable tag: 1.0
-Depends: Debug Bar
+Tested up to: 4.5
+Stable tag: 1.1
 License: GPLv2
 
 Debug Bar Localization adds a new panel to the Debug Bar which displays information on the locale for your install and the language files loaded.
@@ -21,6 +20,15 @@ Additionally it will show you:
 * For which text-domains `load_..._textdomain()` was called more than once.
 * Which files WP tried to load to obtain a translation and whether this was successful.
 * If successful: how many translated strings were found and when the translation was last updated.
+
+
+> **Did you know ?**
+>
+> During the creating and continued development of this plugin a - localization related - performance issue and a bug were found in WordPress itself.
+> For each of these I've send in patches. The end-results are now in core.
+>
+> Want to know more ? Here they are: [Trac 35439](https://core.trac.wordpress.org/ticket/35439) and [Trac 35442](https://core.trac.wordpress.org/ticket/35442) (and related: [Trac 21319](https://core.trac.wordpress.org/ticket/21319) )
+
 
 = Important =
 
@@ -77,14 +85,16 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
-= 1.0.1 (2016-xx-xx ) =
-* Don't show warning about duplicate load calls on plugins page as that's caused by core, not by a plugin and the warning could be misleading.
-* Prevent error notices in WP < 4.0.
-* Make loading of text-domain compatible with use of the plugin in the `must-use` plugins directory.
+= 1.1 (2016-04-29 ) =
+* [Enhancement] Don't show warning about duplicate load calls on plugins page as that's caused by core, not by a plugin and the warning could be misleading.
+* [Enhancement] Make loading of 'our own' text-domain compatible with use of this plugin in the `must-use` plugins directory.
 * [Enhancement] Improve categorization of the loaded text-domains. This mainly applies to text-domains for which the mo_file paths are being filtered.
 * [Enhancement] Added a section showing potentially unnecessary/inefficient `load_textdomain` calls.
+
 * [Bugfix] The plugin loading order functions were inadvertently checking the wrong value and - in single site - install, adding an invalid value to the active plugins list causing incorrect 'plugin deactivated as file not found' notices.
+
 * [Compatibility] Fix WP 4.5 compatibility - the check whether a text-domain `load` call was made (ab)used a bug in the `is_textdomain_loaded()` function. [This bug](https://core.trac.wordpress.org/ticket/21319) was fixed in WP 4.5. Fixed by creating a work-around to still be able to provide this information.
+* [Compatibility] Prevent PHP error notices in WP < 4.0.
 * General housekeeping
 
 = 1.0 (2016-01-13) =
@@ -92,6 +102,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 
 == Upgrade Notice ==
+
+= 1.1 =
+* Upgrade recommended. WP 4.5 compatibility & some bug fixes and enhancements.
 
 = 1.0 =
 * Initial release.
