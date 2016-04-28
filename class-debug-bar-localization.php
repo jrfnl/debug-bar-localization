@@ -34,7 +34,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 		 *
 		 * @const string
 		 */
-		const STYLES_VERSION = '1.0';
+		const STYLES_VERSION = '1.1';
 
 		/**
 		 * Plugin slug.
@@ -179,6 +179,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 			$this->render_no_load_textdomain_section();
 			$this->render_unload_textdomain_section();
 			$this->render_load_textdomain_section();
+			$this->render_inefficient_load_textdomain_section();
 		}
 
 
@@ -252,6 +253,33 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 				foreach ( $diff as $missing ) {
 					echo '
 					<li>', esc_html( $missing ), '</li>';
+				}
+				echo '
+				</ul>
+			</div>';
+			}
+		}
+
+
+		/**
+		 * Render the 'Potentially inefficient load text-domain calls' section.
+		 */
+		protected function render_inefficient_load_textdomain_section() {
+			$diff = array_diff( array_keys( $this->logger->load_log ), $this->domains );
+
+			// Remove the db-pretty-output domain as it is normally used *after* this panel.
+			$diff = array_diff( $diff, array( 'db-pretty-output' ) );
+
+			if ( ! empty( $diff ) && is_array( $diff ) ) {
+				echo '
+			<div id="db-localization-inefficient-load-textdomain">
+				<h3>', esc_html__( 'Potentially inefficient calls', 'debug-bar-localization' ), '</h3>
+				<p>', esc_html__( 'Loading a text domain when it will not be used is inefficient. Lean, or lazy loading is a programming best practice which comes down to only loading files if and when needed.', 'debug-bar-localization' ), '</p>
+				<p>', wp_kses( __( 'The below textdomains <em>were</em> loaded, but were <em>not used</em> in a localization call during this page load.', 'debug-bar-localization' ), array( 'em' => array() ) ), esc_html__( 'This is not always "wrong", but these calls could benefit from a visual code inspection.', 'debug-bar-localization' ), '</p>
+				<ul>';
+				foreach ( $diff as $unused ) {
+					echo '
+					<li>', esc_html( $unused ), '</li>';
 				}
 				echo '
 				</ul>

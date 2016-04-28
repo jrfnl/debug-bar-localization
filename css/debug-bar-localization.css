@@ -26,6 +26,10 @@
 	list-style: circle inside url('../images/badge-circle-cross-16.png');
 }
 
+#db-localization-inefficient-load-textdomain ul {
+	list-style: circle inside url('../images/search-16.png');
+}
+
 #db-localization-unload-textdomain ul {
 	list-style: disc inside;
 }
