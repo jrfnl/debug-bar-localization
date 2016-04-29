@@ -212,7 +212,6 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 							<td>-</td>
 						</tr>';
 
-
 			if ( ! empty( $available ) && is_array( $available ) ) {
 				foreach ( $available as $locale ) {
 					$class = ( $current_locale === $locale ) ? $loaded_class : '';
@@ -377,7 +376,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 					}
 
 					echo '>
-					<th class="', esc_attr( $domain_class ) ,'">', esc_html( $domain ), '</th>
+					<th class="', esc_attr( $domain_class ), '">', esc_html( $domain ), '</th>
 					<td>', esc_html( $string_count ), '</td>
 					<td>';
 
@@ -397,7 +396,12 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 						echo '
 				</tr>
 				<tr class="has-duplicates">
-					<td colspan="4" class="duplicates-warning">', sprintf( esc_html__( 'WordPress tried to load the same .mo file more than once. This can happen if the requested translation is not found and the %s call for this domain was made several times. Please contact the theme or plugin developer to get this fixed.', 'debug-bar-localization' ), '<code>load_..._textdomain()</code>' ) , '</td>';
+					<td colspan="4" class="duplicates-warning">',
+							sprintf(
+								/* translators: %s = code snippet. */
+								esc_html__( 'WordPress tried to load the same .mo file more than once. This can happen if the requested translation is not found and the %s call for this domain was made several times. Please contact the theme or plugin developer to get this fixed.', 'debug-bar-localization' ),
+								'<code>load_..._textdomain()</code>'
+							), '</td>';
 					}
 
 					echo '
@@ -485,7 +489,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 				/* translators: 1: date, 2: translation program name. */
 				__( '%s via %s', 'debug-bar-localization' ),
 				substr( $revision_date, 0, 10 ),
-				'<em>' . $generator . '</em>'
+				'<em>' . esc_html( $generator ) . '</em>'
 			) );
 		}
 
