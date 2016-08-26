@@ -160,8 +160,7 @@ if ( ! class_exists( 'Debug_Bar_Localization_Log_Domain_Entry' ) ) {
 		public function count_translated_strings() {
 			if ( ! isset( $GLOBALS['l10n'][ $this->domain ] ) ) {
 				return 0;
-			}
-			else {
+			} else {
 				return count( $GLOBALS['l10n'][ $this->domain ]->entries );
 			}
 		}

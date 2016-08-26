@@ -115,8 +115,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 			$lang_path = dirname( plugin_basename( __FILE__ ) ) . '/languages';
 			if ( false === strpos( __FILE__, basename( WPMU_PLUGIN_DIR ) ) ) {
 				load_plugin_textdomain( $domain, false, $lang_path );
-			}
-			else {
+			} else {
 				load_muplugin_textdomain( $domain, $lang_path );
 			}
 		}
@@ -166,8 +165,8 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 
 			if ( defined( 'WPLANG' ) ) {
 				echo esc_html( WPLANG );
-			}
-			else {
+
+			} else {
 				echo '<small>', esc_html__( '(not defined)', 'debug-bar-localization' ), '</small>';
 			}
 
@@ -332,8 +331,8 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 
 				echo '
 			</div>';
-			}
-			else {
+
+			} else {
 				echo '
 				<hr />
 				<p>', wp_kses( __( 'No text domain load calls made. This should never happen...', 'debug-bar-localization' ), array( 'code' => array() ) ), '</p>';
@@ -382,8 +381,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 
 					if ( true === $loaded ) {
 						$this->render_last_updated( $domain );
-					}
-					else {
+					} else {
 						echo '-';
 					}
 
@@ -476,18 +474,16 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 			if ( ! empty( $x_generator ) && is_string( $x_generator ) ) {
 				if ( false !== strpos( $x_generator, 'GlotPress' ) ) {
 					$generator = 'GlotPress';
-				}
-				elseif ( false !== strpos( $x_generator, 'Poedit' ) ) {
+				} elseif ( false !== strpos( $x_generator, 'Poedit' ) ) {
 					$generator = 'Poedit';
-				}
-				else {
+				} else {
 					$generator = $x_generator;
 				}
 			}
 
 			echo wp_kses_post( sprintf(
 				/* translators: 1: date, 2: translation program name. */
-				__( '%s via %s', 'debug-bar-localization' ),
+				__( '%1$s via %2$s', 'debug-bar-localization' ),
 				substr( $revision_date, 0, 10 ),
 				'<em>' . esc_html( $generator ) . '</em>'
 			) );
@@ -509,16 +505,15 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 					if ( $file->loaded ) {
 						echo '
 								<li class="loaded">', esc_html( $file ), ' <span>(', esc_html( $file->file_permissions ), ')</span></li>';
-					}
-					else {
+					} else {
 						echo '
 								<li class="not-loaded">', esc_html( $file ), '</li>';
 					}
 				}
 				echo '
 							</ul>';
-			}
-			else {
+
+			} else {
 				echo '-';
 			}
 		}

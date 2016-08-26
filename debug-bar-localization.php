@@ -53,9 +53,9 @@ if ( ! function_exists( 'db_localization_has_parent_plugin' ) ) {
 
 			// Add to recently active plugins list.
 			if ( ! is_network_admin() ) {
-				update_option( 'recently_activated', array( DB_LOCALIZATION_BASENAME => time() ) + (array) get_option( 'recently_activated' ) );
+				update_option( 'recently_activated', ( array( DB_LOCALIZATION_BASENAME => time() ) + (array) get_option( 'recently_activated' ) ) );
 			} else {
-				update_site_option( 'recently_activated', array( DB_LOCALIZATION_BASENAME => time() ) + (array) get_site_option( 'recently_activated' ) );
+				update_site_option( 'recently_activated', ( array( DB_LOCALIZATION_BASENAME => time() ) + (array) get_site_option( 'recently_activated' ) ) );
 			}
 
 			// Prevent trying again on page reload.
