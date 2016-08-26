@@ -141,8 +141,7 @@ if ( ! class_exists( 'Debug_Bar_Localization_logger' ) ) {
 		public function get_requested_domains() {
 			if ( version_compare( $GLOBALS['wp_version'], '4.4.99', '<' ) ) {
 				return array_keys( $GLOBALS['l10n'] );
-			}
-			else {
+			} else {
 				return array_unique( $this->domain_log );
 			}
 		}

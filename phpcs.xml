@@ -2,11 +2,14 @@
 <ruleset name="Debug Bar Localization">
 	<description>The code standard for Debug Bar Localization is WordPress.</description>
 
+	<!-- ##### PHP cross-version compatibility ##### -->
+	<config name="testVersion" value="5.2-99.0"/>
+	<rule ref="PHPCompatibility"/>
+
+
+	<!-- ##### WordPress sniffs #####-->
 	<rule ref="WordPress">
 		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines" />
-
-		<!-- else on new line is perfectly fine -->
-		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace" />
 	</rule>
 
 

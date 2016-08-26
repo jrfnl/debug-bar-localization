@@ -137,17 +137,17 @@ if ( ! class_exists( 'Debug_Bar_Localization_Log_MO_file_Entry' ) ) {
 		private function get_type( $file ) {
 			if ( false !== strpos( $file, WPMU_PLUGIN_DIR ) ) {
 				return 'muplugin';
-			}
-			elseif ( false !== strpos( $file, WP_PLUGIN_DIR ) || false !== strpos( $file, WP_LANG_DIR . '/plugins/' ) ) {
+
+			} elseif ( false !== strpos( $file, WP_PLUGIN_DIR ) || false !== strpos( $file, WP_LANG_DIR . '/plugins/' ) ) {
 				return 'plugin';
-			}
-			elseif ( ( false !== strpos( $file, get_stylesheet_directory() ) || false !== strpos( $file, get_template_directory() ) ) || false !== strpos( $file, WP_LANG_DIR . '/themes/' ) ) {
+
+			} elseif ( ( false !== strpos( $file, get_stylesheet_directory() ) || false !== strpos( $file, get_template_directory() ) ) || false !== strpos( $file, WP_LANG_DIR . '/themes/' ) ) {
 				return 'theme';
-			}
-			elseif ( false !== strpos( $file, WP_LANG_DIR ) ) {
+
+			} elseif ( false !== strpos( $file, WP_LANG_DIR ) ) {
 				return 'core';
-			}
-			else {
+
+			} else {
 				return self::UNKNOWN_TYPE;
 			}
 		}
