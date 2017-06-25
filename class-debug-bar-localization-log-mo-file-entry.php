@@ -19,12 +19,12 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit();
 }
 
-if ( ! class_exists( 'Debug_Bar_Localization_Log_MO_file_Entry' ) ) {
+if ( ! class_exists( 'Debug_Bar_Localization_Log_MO_File_Entry' ) ) {
 
 	/**
 	 * Class to hold information on an individual MO file.
 	 */
-	class Debug_Bar_Localization_Log_MO_file_Entry {
+	class Debug_Bar_Localization_Log_MO_File_Entry {
 
 		/**
 		 * Keyword used for the 'unknown' add-on type.

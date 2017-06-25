@@ -34,7 +34,7 @@ if ( ! class_exists( 'Debug_Bar_Localization_Log_Domain_Entry' ) ) {
 		private $domain;
 
 		/**
-		 * Array of \Debug_Bar_Localization_Log_MO_file_Entry objects.
+		 * Array of \Debug_Bar_Localization_Log_MO_File_Entry objects.
 		 * One for each MO file WP tried to load for this text domain.
 		 *
 		 * @var array
@@ -61,8 +61,8 @@ if ( ! class_exists( 'Debug_Bar_Localization_Log_Domain_Entry' ) ) {
 		 */
 		public function add_file( $mo_file ) {
 			// Make sure we have the name of the actual file as used after filtering.
-			$actual_mo_file   = apply_filters( 'load_textdomain_mofile', $mo_file, $this->domain );
-			$this->mo_files[] = new Debug_Bar_Localization_Log_MO_file_Entry( $actual_mo_file, $mo_file );
+			$actual_mo_file   = apply_filters( 'load_textdomain_mofile', $mo_file, $this->domain ); // WPCS: prefix ok.
+			$this->mo_files[] = new Debug_Bar_Localization_Log_MO_File_Entry( $actual_mo_file, $mo_file );
 		}
 
 
@@ -95,11 +95,11 @@ if ( ! class_exists( 'Debug_Bar_Localization_Log_Domain_Entry' ) ) {
 		 */
 		public function get_type() {
 			foreach ( $this->mo_files as $file ) {
-				if ( Debug_Bar_Localization_Log_MO_file_Entry::UNKNOWN_TYPE !== $file->type ) {
+				if ( Debug_Bar_Localization_Log_MO_File_Entry::UNKNOWN_TYPE !== $file->type ) {
 					return $file->type;
 				}
 			}
-			return Debug_Bar_Localization_Log_MO_file_Entry::UNKNOWN_TYPE;
+			return Debug_Bar_Localization_Log_MO_File_Entry::UNKNOWN_TYPE;
 		}
 
 

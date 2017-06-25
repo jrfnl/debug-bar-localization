@@ -52,10 +52,14 @@ if ( ! function_exists( 'db_localization_has_parent_plugin' ) ) {
 			deactivate_plugins( DB_LOCALIZATION_BASENAME, false, is_network_admin() );
 
 			// Add to recently active plugins list.
+			$insert = array(
+				DB_LOCALIZATION_BASENAME => time(),
+			);
+
 			if ( ! is_network_admin() ) {
-				update_option( 'recently_activated', ( array( DB_LOCALIZATION_BASENAME => time() ) + (array) get_option( 'recently_activated' ) ) );
+				update_option( 'recently_activated', ( $insert + (array) get_option( 'recently_activated' ) ) );
 			} else {
-				update_site_option( 'recently_activated', ( array( DB_LOCALIZATION_BASENAME => time() ) + (array) get_site_option( 'recently_activated' ) ) );
+				update_site_option( 'recently_activated', ( $insert + (array) get_site_option( 'recently_activated' ) ) );
 			}
 
 			// Prevent trying again on page reload.
@@ -107,8 +111,11 @@ if ( version_compare( $wp_version, '4.0', '>' ) ) {
 			}
 
 			$this_plugin = $value[ DB_LOCALIZATION_BASENAME ];
+			$insert      = array(
+				DB_LOCALIZATION_BASENAME => $this_plugin,
+			);
 			unset( $value[ DB_LOCALIZATION_BASENAME ] );
-			return array_merge( array( DB_LOCALIZATION_BASENAME => $this_plugin ), $value );
+			return array_merge( $this_plugin, $value );
 		}
 	}
 
