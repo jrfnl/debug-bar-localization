@@ -269,11 +269,15 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 			$diff = array_diff( $diff, array( 'db-pretty-output' ) );
 
 			if ( ! empty( $diff ) && is_array( $diff ) ) {
+				$kses_allowed = array(
+					'em' => array(),
+				);
+
 				echo '
 			<div id="db-localization-inefficient-load-textdomain">
 				<h3>', esc_html__( 'Potentially inefficient calls', 'debug-bar-localization' ), '</h3>
 				<p>', esc_html__( 'Loading a text domain when it will not be used is inefficient. Lean, or lazy loading is a programming best practice which comes down to only loading files if and when needed.', 'debug-bar-localization' ), '</p>
-				<p>', wp_kses( __( 'The below textdomains <em>were</em> loaded, but were <em>not used</em> in a localization call during this page load.', 'debug-bar-localization' ), array( 'em' => array() ) ), esc_html__( 'This is not always "wrong", but these calls could benefit from a visual code inspection.', 'debug-bar-localization' ), '</p>
+				<p>', wp_kses( __( 'The below textdomains <em>were</em> loaded, but were <em>not used</em> in a localization call during this page load.', 'debug-bar-localization' ), $kses_allowed ), esc_html__( 'This is not always "wrong", but these calls could benefit from a visual code inspection.', 'debug-bar-localization' ), '</p>
 				<ul>';
 				foreach ( $diff as $unused ) {
 					echo '
@@ -333,9 +337,13 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 			</div>';
 
 			} else {
+				$kses_allowed = array(
+					'code' => array(),
+				);
+
 				echo '
 				<hr />
-				<p>', wp_kses( __( 'No text domain load calls made. This should never happen...', 'debug-bar-localization' ), array( 'code' => array() ) ), '</p>';
+				<p>', wp_kses( __( 'No text domain load calls made. This should never happen...', 'debug-bar-localization' ), $kses_allowed ), '</p>';
 			}
 		}
 
