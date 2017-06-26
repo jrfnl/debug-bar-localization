@@ -85,6 +85,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
+= Trunk =
+* Defer to just in time loading of translations for WP > 4.5.
+
 = 1.1 (2016-04-29 ) =
 * [Enhancement] Don't show warning about duplicate load calls on plugins page as that's caused by core, not by a plugin and the warning could be misleading.
 * [Enhancement] Make loading of 'our own' text-domain compatible with use of this plugin in the `must-use` plugins directory.
