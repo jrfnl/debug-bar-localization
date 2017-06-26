@@ -47,7 +47,7 @@ if ( ! function_exists( 'db_localization_has_parent_plugin' ) ) {
 	 */
 	function db_localization_has_parent_plugin() {
 		if ( is_admin() && ( ! class_exists( 'Debug_Bar' ) && current_user_can( 'activate_plugins' ) ) && is_plugin_active( DB_LOCALIZATION_BASENAME ) ) {
-			add_action( 'admin_notices', create_function( null, 'echo \'<div class="error"><p>\', sprintf( __( \'Activation failed: Debug Bar must be activated to use the <strong>Debug Bar Localization</strong> Plugin. %sVisit your plugins page to activate.\', \'debug-bar-localization\' ), \'<a href="\' . admin_url( \'plugins.php#debug-bar\' ) . \'">\' ), \'</a></p></div>\';' ) );
+			add_action( 'admin_notices', create_function( null, 'echo \'<div class="error"><p>\', sprintf( __( \'Activation failed: Debug Bar must be activated to use the <strong>Debug Bar Localization</strong> Plugin. %sVisit your plugins page to install & activate.\', \'debug-bar-localization\' ), \'<a href="\' . admin_url( \'plugin-install.php?tab=search&s=debug+bar\' ) . \'">\' ), \'</a></p></div>\';' ) );
 
 			deactivate_plugins( DB_LOCALIZATION_BASENAME, false, is_network_admin() );
 
