@@ -148,5 +148,5 @@ if ( version_compare( $wp_version, '4.0', '>' ) ) {
 	}
 
 	require_once dirname( __FILE__ ) . '/class-debug-bar-localization-logger.php';
-	$GLOBALS['db_localization_logger'] = new Debug_Bar_Localization_Logger;
+	$GLOBALS['db_localization_logger'] = new Debug_Bar_Localization_Logger();
 }
