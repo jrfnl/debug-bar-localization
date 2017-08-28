@@ -5,6 +5,7 @@ Tags: debugbar, debug-bar, Debug Bar, Localization, Language, Translation, text 
 Requires at least: 4.0
 Tested up to: 4.5
 Stable tag: 1.1
+Requires PHP: 5.2.4
 License: GPLv2
 
 Debug Bar Localization adds a new panel to the Debug Bar which displays information on the locale for your install and the language files loaded.
