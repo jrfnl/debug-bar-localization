@@ -89,7 +89,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 = Trunk =
 * Defer to just in time loading of translations for WP > 4.5.
 
-= 1.1 (2016-04-29 ) =
+= 1.1 =
+_Release date: 2016-04-29_
+
 * [Enhancement] Don't show warning about duplicate load calls on plugins page as that's caused by core, not by a plugin and the warning could be misleading.
 * [Enhancement] Make loading of 'our own' text-domain compatible with use of this plugin in the `must-use` plugins directory.
 * [Enhancement] Improve categorization of the loaded text-domains. This mainly applies to text-domains for which the mo_file paths are being filtered.
@@ -101,7 +103,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 * [Compatibility] Prevent PHP error notices in WP < 4.0.
 * General housekeeping
 
-= 1.0 (2016-01-13) =
+= 1.0 =
+_Release date: 2016-01-13_
+
 * Initial release.
 
 
