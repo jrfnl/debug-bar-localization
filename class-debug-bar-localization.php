@@ -220,7 +220,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 					</thead>
 					<tbody>
 						<tr>
-							<th>' . sprintf( /* translators: %s: Locale. */ __( '%s:', 'debug-bar-localization' ), 'en_US' ) . '</th>
+							<th>' . sprintf( /* translators: %s: Locale. */ esc_html__( '%s:', 'debug-bar-localization' ), 'en_US' ) . '</th>
 							<td>English (United States)</td>
 							<td>-</td>
 							<td>-</td>
@@ -232,7 +232,7 @@ if ( ! class_exists( 'Debug_Bar_Localization' ) && class_exists( 'Debug_Bar_Pane
 					echo // WPCS: xss ok.
 					'
 						<tr>
-							<th', $class, '>', sprintf( /* translators: %s: Locale. */ __( '%s:', 'debug-bar-localization' ), esc_html( $this->wp_translations[ $locale ]['language'] ) ), '</th>
+							<th', $class, '>', sprintf( /* translators: %s: Locale. */ esc_html__( '%s:', 'debug-bar-localization' ), esc_html( $this->wp_translations[ $locale ]['language'] ) ), '</th>
 							<td', $class, '>', esc_html( $this->wp_translations[ $locale ]['native_name'] ), '</td>
 							<td', $class, '>', esc_html( $this->wp_translations[ $locale ]['english_name'] ), '</td>
 							<td', $class, '>', esc_html( $this->wp_translations[ $locale ]['updated'] ), '</td>
